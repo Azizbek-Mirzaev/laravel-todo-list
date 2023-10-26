@@ -11,7 +11,10 @@ class UserController extends Controller
     public function index()
     {
          $users = User::get();
-         return view('admin.user.index');
-        
+
+         return view('admin.user.index',[
+            'user_list'=>$users
+        ]);
+
     }
 }
