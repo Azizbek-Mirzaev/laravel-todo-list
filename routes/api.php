@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\TaskApiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+
+Route::get('tasks', [TaskApiController::class, 'index'])->name('api.tasks.index');
+Route::post('tasks/store', [TaskApiController::class, 'store'])->name('api.tasks.store');

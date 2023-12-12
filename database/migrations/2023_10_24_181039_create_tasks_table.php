@@ -17,8 +17,8 @@ return new class extends Migration
             $table->text('description');
             $table->dateTime('deadline');//тут был в название косяк dateTime
             $table->boolean('status');
-            $table->boolean('priority');
-            $table->integer('user_id'); //user_id тут перепутали местами с integer
+            $table->integer('priority');
+            $table->foreignId('user_id')->constrained('users'); //user_id тут перепутали местами с integer
             $table->timestamps();
         });
     }
