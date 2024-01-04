@@ -71,7 +71,7 @@ Route::post('admin/user/update/{id}',[UserController::class,'update'])
 ->name('admin.user.update')
 ->middleware('auth');
 
-Route::get('admin/user/delete/{id}',[UserController:: class, 'delete'])
+Route::post('admin/user/delete/{id}',[UserController:: class, 'delete'])
 ->name('admin.user.delete')
 ->middleware('auth');
 

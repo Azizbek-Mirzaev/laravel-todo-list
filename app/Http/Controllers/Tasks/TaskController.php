@@ -15,13 +15,10 @@ class TaskController extends Controller
             ->when($request->exists('priority'), function ($builder) use ($request) {
                 $builder->where('priority', $request->get('priority'));
             })->with(["user:id,name"])
-            ->get();
-
+            ->paginate(5);//тут выдаёт новость по 5 штук на лист
 
          return view('tasks.index',
-         [
-            'task_list' => $tasks
-         ]);
+         ['task_list' => $tasks]);
 
     }
     public function done(Request $request, int $id)
@@ -46,10 +43,8 @@ class TaskController extends Controller
          $task = Task::get();
 
             // $task->priority = Task::PRIORITY_LOW
-        //  return view('tasks.create',[
-        //         'task'=>$task
-        //     ]);
-        return TaskResource::collection($task);
+        return view('tasks.create',['task'=>$task]);
+       // return TaskResource::collection($task);//ТутУжеAPI
 
     }
     public function store(Request $request)

@@ -3,7 +3,7 @@
 @section('content')
 <div class="mt-3">
     <a href="{{route('tasks.create')}}" class="btn btn-primary">Создать</a>
-
+<div class="my-3">{{ $task_list->links() }}</div>
         <table class="table table-striped text-center">
     <thead>
         <tr>
@@ -82,6 +82,7 @@
     </tbody>
 
     </table>
+    <div class="my-3">{{ $task_list->links() }}</div>
 </div>
 <br> <br>
 <a  class="btn btn-secondary" href="{{ route('admin') }}">Назад</a>

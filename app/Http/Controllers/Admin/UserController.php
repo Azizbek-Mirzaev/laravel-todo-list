@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -12,6 +13,7 @@ class UserController extends Controller
     {
          $users = User::get();
 
+        //  return UserResource::collection($users);
          return view('admin.user.index',[
             'user_list'=>$users
         ]);
@@ -41,6 +43,7 @@ class UserController extends Controller
         //dd($user);
         $user->save();
         return redirect()->back();
+        //return UserResource::make($user);
     }
     public function delete($id)
     {
@@ -48,7 +51,8 @@ class UserController extends Controller
 
          $user->delete();
 
-         return redirect()->back();
+        //  return redirect()->back();
+        return response(['message' => 'Успуешно удалён пользователь']);
 
     }
     public function show($id)
